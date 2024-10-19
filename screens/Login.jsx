@@ -19,10 +19,10 @@ import Button from "../component/Button";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import * as ImagePicker from "expo-image-picker";
 import { TextInput } from "react-native-paper";
-// import { GoogleSvg, FacebookSvg } from "../iconSvg/icon";
+import CustomKeybordView from "../component/keyBoder";
 
 const Login = ({ navigation }) => {
-  const [isSinIn, setIsSinIn] = useState(false);
+  const [isSinIn, setIsSinIn] = useState(true);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -70,7 +70,7 @@ const Login = ({ navigation }) => {
     }
   };
   return (
-    <SafeAreaView style={styles.container}>
+    <CustomKeybordView style={styles.container}>
       <ImageBackground
         source={require("../img/bgWelecom.jpg")}
         resizeMode="cover"
@@ -93,7 +93,7 @@ const Login = ({ navigation }) => {
                 style={styles.userImg}
               />
               <TouchableOpacity onPress={pickImage} style={styles.iconImg}>
-                <MaterialIcons style={styles.icon} name="add-photo-alternate" />
+                <MaterialIcons name="add-a-photo" style={styles.icon} />
               </TouchableOpacity>
             </View>
           ) : (
@@ -174,7 +174,9 @@ const Login = ({ navigation }) => {
               <TouchableOpacity
                 onPress={() => navigation.navigate("ForgotPassword")}
               >
-                <Text style={{ ...styles.isSinInOne, paddingVertical: 10 }}>
+                <Text
+                  style={{ ...styles.isSinInOne, paddingVertical: hp("3%") }}
+                >
                   Forgot your password ?
                 </Text>
               </TouchableOpacity>
@@ -182,7 +184,7 @@ const Login = ({ navigation }) => {
           </View>
         </ScrollView>
       </ImageBackground>
-    </SafeAreaView>
+    </CustomKeybordView>
   );
 };
 
@@ -192,7 +194,7 @@ const styles = StyleSheet.create({
     backgroundColor: colors.BACK,
   },
   containerTwo: {
-    flex: 1,
+    height: hp("120%"),
     alignItems: "center",
     justifyContent: "center",
   },
@@ -217,7 +219,10 @@ const styles = StyleSheet.create({
   },
   icon: {
     fontSize: wp("7%"),
-    color: colors.GREEN,
+    color: colors.ORANGE,
+    position: "absolute",
+    bottom: hp("0.1%"),
+    left: wp("-5.6%"),
   },
   input: {
     backgroundColor: colors.GREEN,

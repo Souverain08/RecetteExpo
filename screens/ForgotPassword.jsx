@@ -16,12 +16,13 @@ import {
 import Button from "../component/Button";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { Ionicons } from "@expo/vector-icons";
+import CustomKeybordView from "../component/keyBoder";
 
 const ForgotPassword = ({ navigation }) => {
   const { top } = useSafeAreaInsets();
   const paddingTop = top > 0 ? top + 10 : 30;
   return (
-    <SafeAreaView style={styles.container}>
+    <CustomKeybordView style={styles.container}>
       <ImageBackground
         source={require("../img/bgWelecom.jpg")}
         resizeMode="cover"
@@ -52,9 +53,14 @@ const ForgotPassword = ({ navigation }) => {
               colors: {
                 primary: colors.GREEN, // Outline and label color when focused
                 background: "rgba(14, 56, 84, 0.5)",
+                text: "#fff",
               },
             }}
           />
+          <Text style={{ ...styles.titleTwo, paddingTop: hp("2%") }}>
+            You may receive text notifications from us for security and login
+            purposes.
+          </Text>
           <Button
             style={styles.Button}
             handleNavigation={() => console.log("Bonjour")}
@@ -64,17 +70,16 @@ const ForgotPassword = ({ navigation }) => {
           />
         </View>
       </ImageBackground>
-    </SafeAreaView>
+    </CustomKeybordView>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: colors.BACK,
   },
   containerTwo: {
-    flex: 1,
+    height: hp("120%"),
     alignItems: "flex-start",
     justifyContent: "flex-start",
   },
