@@ -171,7 +171,9 @@ const Login = ({ navigation }) => {
               </TouchableOpacity>
             </View>
             {isSinIn && (
-              <TouchableOpacity>
+              <TouchableOpacity
+                onPress={() => navigation.navigate("ForgotPassword")}
+              >
                 <Text style={{ ...styles.isSinInOne, paddingVertical: 10 }}>
                   Forgot your password ?
                 </Text>
@@ -227,7 +229,7 @@ const styles = StyleSheet.create({
   },
   containerInput: {
     width: wp("100%"),
-    paddingHorizontal: wp("10%"),
+    paddingHorizontal: wp("5%"),
     paddingVertical: hp("3%"),
   },
   Button: {
@@ -261,7 +263,7 @@ const styles = StyleSheet.create({
     gap: 4,
   },
   iconCheeld: {
-    backgroundColor: "rgba(14, 56, 84, 0.5)",
+    backgroundColor: "rgba(14, 56, 84, 0.6)",
     padding: 10,
     borderRadius: wp("1.5%"),
     alignItems: "center",
