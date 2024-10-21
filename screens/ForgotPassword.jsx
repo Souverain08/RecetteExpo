@@ -79,7 +79,7 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   containerTwo: {
-    height: hp("120%"),
+    height: hp("103%"),
     alignItems: "flex-start",
     justifyContent: "flex-start",
   },

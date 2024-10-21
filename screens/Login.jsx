@@ -109,7 +109,7 @@ const Login = ({ navigation }) => {
                 right={<TextInput.Affix />}
                 theme={{
                   colors: {
-                    primary: colors.GREEN, // Outline and label color when focused
+                    primary: colors.GREEN,
                     background: "rgba(14, 56, 84, 0.5)",
                   },
                 }}
@@ -194,7 +194,7 @@ const styles = StyleSheet.create({
     backgroundColor: colors.BACK,
   },
   containerTwo: {
-    height: hp("120%"),
+    height: hp("103%"),
     alignItems: "center",
     justifyContent: "center",
   },
