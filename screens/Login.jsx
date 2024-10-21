@@ -28,6 +28,7 @@ const Login = ({ navigation }) => {
   const [password, setPassword] = useState("");
   const [userImg, setUserImg] = useState("");
   const [isChecked, setIsChecked] = useState(false);
+  const [isVisible, setIsVisible] = useState(false);
 
   const handleNavigation = async () => {
     if (
@@ -106,39 +107,50 @@ const Login = ({ navigation }) => {
                 mode="outlined"
                 label="Name"
                 placeholder="Your name"
-                right={<TextInput.Affix />}
                 theme={{
                   colors: {
-                    primary: colors.GREEN,
+                    primary: colors.ORANGE,
                     background: "rgba(14, 56, 84, 0.5)",
                   },
                 }}
+                textColor={colors.WHITE}
               />
             )}
             <TextInput
               mode="outlined"
               label="Email"
               placeholder="Your email"
-              right={<TextInput.Affix />}
               style={{ marginVertical: 10 }}
               theme={{
                 colors: {
-                  primary: colors.GREEN, // Outline and label color when focused
+                  primary: colors.ORANGE, // Outline and label color when focused
                   background: "rgba(14, 56, 84, 0.5)",
                 },
               }}
+              textColor={"#fff"}
+              keyboardType="email-address"
+              autoCapitalize="none"
+              autoCorrect={false}
             />
             <TextInput
               mode="outlined"
               label="Password"
               placeholder="Your password"
-              right={<TextInput.Affix />}
+              secureTextEntry={!isVisible}
+              right={
+                <TextInput.Icon
+                  icon={isVisible ? "eye-off" : "eye"}
+                  color="#fff"
+                  onPress={() => setIsVisible(!isVisible)}
+                />
+              }
               theme={{
                 colors: {
-                  primary: colors.GREEN, // Outline and label color when focused
+                  primary: colors.ORANGE, // Outline and label color when focused
                   background: "rgba(14, 56, 84, 0.5)",
                 },
               }}
+              textColor={"#fff"}
             />
             <Button
               style={styles.Button}
