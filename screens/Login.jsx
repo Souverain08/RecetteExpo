@@ -20,33 +20,48 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import * as ImagePicker from "expo-image-picker";
 import { TextInput } from "react-native-paper";
 import CustomKeybordView from "../component/keyBoder";
+import CustomTextInput from "../component/CustomTextInput";
 
 const Login = ({ navigation }) => {
   const [isSinIn, setIsSinIn] = useState(true);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
+  const [emailOne, setEmailOne] = useState("");
   const [password, setPassword] = useState("");
+  const [passwordOne, setPasswordOne] = useState("");
   const [userImg, setUserImg] = useState("");
   const [isChecked, setIsChecked] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
+  const [isVisibleOne, setIsVisibleOne] = useState(false);
+  const [isPassword, setIsPassword] = useState(false);
+  const [isPasswordOne, setIsPasswordOne] = useState(false);
+  const [isEmailOne, setIsEmailOne] = useState(false);
+  const [message, setMessage] = useState("");
+  const [messageEmailOne, setMessageEmailOne] = useState("");
 
   const handleNavigation = async () => {
-    if (
-      !isSinIn &&
-      name.length > 0 &&
-      email.length > 0 &&
-      password.length > 0
-    ) {
-      navigation.navigate("Welecom");
-    } else if (isSinIn && email.length > 0 && password.length > 0) {
-      const user = {
-        email: email,
-        password: password,
-      };
-      await AsyncStorage.setItem("userProfil", JSON.stringify(user));
-      navigation.navigate("Welecom");
-    } else {
-      alert("Veiller remplir tout les champs");
+    if (isSinIn) {
+      if (emailOne.length <= 0) {
+        setIsEmailOne(true);
+        setMessageEmailOne("Please enter your email address.");
+      } else if (passwordOne.length < 5) {
+        setIsPasswordOne(true);
+        setMessage("Make sure to total at least 6 characters.");
+      } else {
+        if (emailOne.length > 0) {
+          const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+          if (!emailRegex.test(emailOne)) {
+            setIsEmailOne(true);
+            setMessageEmailOne("Please enter a valid email address.");
+          }
+        } else {
+          setIsPasswordOne(false);
+          setIsEmailOne(false);
+          setMessage("");
+          setMessageEmailOne("");
+          //   navigation.navigate("Welecom");
+        }
+      }
     }
   };
 
@@ -95,60 +110,93 @@ const Login = ({ navigation }) => {
           )}
 
           <View style={styles.containerInput}>
-            {!isSinIn && (
-              <TextInput
-                value={name}
-                mode="outlined"
-                label="Name"
-                placeholder="Your name"
-                theme={{
-                  colors: {
-                    primary: colors.ORANGE,
-                    background: "rgba(14, 56, 84, 0.5)",
-                  },
-                }}
-                textColor={colors.WHITE}
-              />
-            )}
-            <TextInput
-              value={email}
-              mode="outlined"
-              label="Email"
-              placeholder="Your email"
-              style={{ marginVertical: 10 }}
-              theme={{
-                colors: {
-                  primary: colors.ORANGE, // Outline and label color when focused
-                  background: "rgba(14, 56, 84, 0.5)",
-                },
-              }}
-              textColor={"#fff"}
-              keyboardType="email-address"
-              autoCapitalize="none"
-              autoCorrect={false}
-            />
-            <TextInput
-              value={password}
-              mode="outlined"
-              label="Password"
-              placeholder="Your password"
-              secureTextEntry={!isVisible}
-              right={
-                <TextInput.Icon
-                  icon={isVisible ? "eye-off" : "eye"}
-                  color="#fff"
-                  onPress={() => setIsVisible(!isVisible)}
+            {isSinIn ? (
+              <View>
+                {/* LOGIN */}
+                <CustomTextInput
+                  label="Email"
+                  placeholder="Your email"
+                  style={{ marginVertical: 10 }}
+                  onChangeText={(text) => setEmailOne(text)}
+                  keyboardType="email-address"
+                  autoCapitalize="none"
+                  autoCorrect={false}
+                  outlineColor={isEmailOne ? colors.TOMATO : colors.GREEN2}
                 />
-              }
-              theme={{
-                colors: {
-                  primary: colors.ORANGE, // Outline and label color when focused
-                  background: "rgba(14, 56, 84, 0.5)",
-                },
-              }}
-              textColor={"#fff"}
-              outlineColor={password <= 6 ? colors.TOMATO : colors.GREEN}
-            />
+                {messageEmailOne && (
+                  <Text
+                    style={{
+                      ...styles.isSinInOne,
+                      color: colors.TOMATO,
+                      textAlign: "left",
+                      paddingBottom: hp(0.5),
+                      fontSize: hp(1.4),
+                    }}
+                  >
+                    {messageEmailOne}
+                  </Text>
+                )}
+                <CustomTextInput
+                  label="Password"
+                  placeholder="Your password"
+                  secureTextEntry={!isVisibleOne}
+                  onChangeText={(text) => setPasswordOne(text)}
+                  right={
+                    <TextInput.Icon
+                      icon={isVisibleOne ? "eye-off" : "eye"}
+                      color="#fff"
+                      onPress={() => setIsVisibleOne(!isVisibleOne)}
+                    />
+                  }
+                  outlineColor={isPasswordOne ? colors.TOMATO : colors.GREEN2}
+                />
+                {message && (
+                  <Text
+                    style={{
+                      ...styles.isSinInOne,
+                      color: colors.TOMATO,
+                      textAlign: "left",
+                      paddingTop: hp(1),
+                      fontSize: hp(1.4),
+                    }}
+                  >
+                    {message}
+                  </Text>
+                )}
+              </View>
+            ) : (
+              <View>
+                <CustomTextInput
+                  label="Name"
+                  placeholder="Your name"
+                  onChangeText={(text) => setName(text)}
+                />
+                <CustomTextInput
+                  label="Email"
+                  placeholder="Your email"
+                  style={{ marginVertical: 10 }}
+                  onChangeText={(text) => setEmail(text)}
+                  keyboardType="email-address"
+                  autoCapitalize="none"
+                  autoCorrect={false}
+                />
+                <CustomTextInput
+                  label="Password"
+                  placeholder="Your password"
+                  secureTextEntry={!isVisible}
+                  onChangeText={(text) => setPassword(text)}
+                  right={
+                    <TextInput.Icon
+                      icon={isVisible ? "eye-off" : "eye"}
+                      color="#fff"
+                      onPress={() => setIsVisible(!isVisible)}
+                    />
+                  }
+                  outlineColor={!isPassword ? colors.TOMATO : colors.GREEN2}
+                />
+              </View>
+            )}
+
             <Button
               style={styles.Button}
               handleNavigation={handleNavigation}
