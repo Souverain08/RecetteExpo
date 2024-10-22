@@ -5,19 +5,21 @@ import { colors } from "../constant/Constant";
 
 export default function CustomTextInput({
   label,
+  value,
   placeholder,
   keyboardType,
-  onChangeText,
+  onChangeTextCustom,
   ...props
 }) {
   return (
     <TextInput
       {...props}
+      value={value}
       mode="outlined"
       label={label}
       placeholder={placeholder}
       keyboardType={keyboardType}
-      onChangeText={(text) => onChangeText(text)}
+      onChangeText={(text) => onChangeTextCustom(text)}
       theme={{
         colors: {
           primary: colors.ORANGE, // Outline and label color when focused
