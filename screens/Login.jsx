@@ -37,13 +37,6 @@ const Login = ({ navigation }) => {
       email.length > 0 &&
       password.length > 0
     ) {
-      const user = {
-        name: name,
-        email: email,
-        password: password,
-        userImg: userImg,
-      };
-      await AsyncStorage.setItem("userProfil", JSON.stringify(user));
       navigation.navigate("Welecom");
     } else if (isSinIn && email.length > 0 && password.length > 0) {
       const user = {
@@ -104,6 +97,7 @@ const Login = ({ navigation }) => {
           <View style={styles.containerInput}>
             {!isSinIn && (
               <TextInput
+                value={name}
                 mode="outlined"
                 label="Name"
                 placeholder="Your name"
@@ -117,6 +111,7 @@ const Login = ({ navigation }) => {
               />
             )}
             <TextInput
+              value={email}
               mode="outlined"
               label="Email"
               placeholder="Your email"
@@ -133,6 +128,7 @@ const Login = ({ navigation }) => {
               autoCorrect={false}
             />
             <TextInput
+              value={password}
               mode="outlined"
               label="Password"
               placeholder="Your password"
@@ -151,6 +147,7 @@ const Login = ({ navigation }) => {
                 },
               }}
               textColor={"#fff"}
+              outlineColor={password <= 6 ? colors.TOMATO : colors.GREEN}
             />
             <Button
               style={styles.Button}

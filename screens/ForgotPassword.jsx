@@ -48,14 +48,14 @@ const ForgotPassword = ({ navigation }) => {
             mode="outlined"
             label="Number"
             placeholder="Your number"
-            right={<TextInput.Affix />}
+            keyboardType="numeric"
             theme={{
               colors: {
-                primary: colors.GREEN, // Outline and label color when focused
+                primary: colors.ORANGE, // Outline and label color when focused
                 background: "rgba(14, 56, 84, 0.5)",
-                text: "#fff",
               },
             }}
+            textColor={"#fff"}
           />
           <Text style={{ ...styles.titleTwo, paddingTop: hp("2%") }}>
             You may receive text notifications from us for security and login
