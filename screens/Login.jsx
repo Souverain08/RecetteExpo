@@ -6,7 +6,6 @@ import {
   Image,
   TouchableOpacity,
   ImageBackground,
-  ScrollView,
 } from "react-native";
 import { colors } from "../constant/Constant";
 import {
