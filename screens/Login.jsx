@@ -59,13 +59,13 @@ const Login = ({ navigation }) => {
           if (!emailRegex.test(emailOne)) {
             setIsEmailOne(true);
             setMessageEmailOne("Please enter a valid email address.");
+          } else {
+            setIsPasswordOne(false);
+            setIsEmailOne(false);
+            setMessageOne("");
+            setMessageEmailOne("");
+            navigation.navigate("Welecom");
           }
-        } else {
-          setIsPasswordOne(false);
-          setIsEmailOne(false);
-          setMessageOne("");
-          setMessageEmailOne("");
-          //   navigation.navigate("Welecom");
         }
       }
     } else {
