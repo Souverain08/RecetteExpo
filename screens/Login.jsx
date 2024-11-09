@@ -19,6 +19,7 @@ import { TextInput } from "react-native-paper";
 import CustomKeybordView from "../component/keyBoder";
 import CustomTextInput from "../component/CustomTextInput";
 import Animated, { FadeInDown } from "react-native-reanimated";
+import { GoogleSvg, FacebookSvg } from "../iconSvg/icon";
 
 const Login = ({ navigation }) => {
   const [isSinIn, setIsSinIn] = useState(true);
@@ -63,7 +64,7 @@ const Login = ({ navigation }) => {
             setIsEmailOne(false);
             setMessageOne("");
             setMessageEmailOne("");
-            navigation.navigate("Welecom");
+            navigation.navigate("Home");
           }
         }
       }
@@ -299,10 +300,10 @@ const Login = ({ navigation }) => {
                 entering={FadeInDown.delay(300).springify()}
                 style={styles.iconCheeld}
               >
-                <MaterialIcons name="facebook" size={38} color="white" />
+                <FacebookSvg />
               </Animated.View>
               <View style={styles.iconCheeld}>
-                <AntDesign name="google" size={38} color="white" />
+                <GoogleSvg />
               </View>
             </View>
             <View style={styles.containerTitle}>

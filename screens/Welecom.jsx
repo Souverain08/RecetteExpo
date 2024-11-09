@@ -12,7 +12,7 @@ const Welecom = ({ navigation }) => {
   const [isLod, setIsLod] = useState(false);
 
   const handleNavigation = () => {
-    navigation.navigate("Home");
+    navigation.navigate("Login");
   };
 
   return (
