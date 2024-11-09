@@ -6,6 +6,7 @@ import {
   FlatList,
   Image,
   TouchableOpacity,
+  ImageBackground,
 } from "react-native";
 import { categories, colors } from "../constant/Constant";
 import {
@@ -25,15 +26,22 @@ const Categorie = ({ activeCat, setActiveCat, handleCheked }) => {
         }}
       >
         <View style={styles.item}>
-          <Image
+          <ImageBackground
             source={{ uri: img }}
             style={{
               ...styles.categorieImg,
-              backgroundColor: isActiv ? colors.ORANGE : colors.BACK,
             }}
-            //style = {{...styles.categorieImg, ...activBtn}}
-          />
-          <Text style={styles.title}>{title}</Text>
+          >
+            <View
+              style={{
+                ...StyleSheet.absoluteFillObject,
+                backgroundColor: isActiv ? "#EA8404" : "#181F27",
+                opacity: isActiv ? 0.7 : 0.4,
+                borderRadius: 15,
+              }}
+            />
+            <Text style={styles.title}>{title}</Text>
+          </ImageBackground>
         </View>
       </TouchableOpacity>
     );
@@ -60,23 +68,23 @@ const Categorie = ({ activeCat, setActiveCat, handleCheked }) => {
 
 const styles = StyleSheet.create({
   item: {
-    display: "flex",
     flexDirection: "column",
     alignItems: "center",
-    paddingHorizontal: wp("3%"),
-    paddingVertical: hp("4%"),
+    paddingHorizontal: 4,
+    paddingVertical: 5,
   },
   title: {
     paddingVertical: hp("1%"),
     color: colors.WHITE,
-    fontWeight: "bold",
+    fontWeight: "600",
     fontSize: hp("1.5%"),
   },
   categorieImg: {
-    width: 50,
-    height: 50,
-    borderRadius: 25,
-    padding: wp("5%"),
+    width: 90,
+    height: 40,
+    borderRadius: 30,
+    alignItems: "center",
+    overflow: "hidden",
   },
 });
 

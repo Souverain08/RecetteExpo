@@ -93,7 +93,7 @@ const Home = ({ navigation }) => {
                 color={colors.ORANGE}
               />
               <Badge
-                size={5}
+                size={7}
                 style={{
                   backgroundColor: "#EE6262",
                   position: "absolute",
@@ -109,14 +109,15 @@ const Home = ({ navigation }) => {
           </View>
         </ImageBackground>
       </View>
+      <Text style={styles.titleCategorie}>Categories</Text>
 
-      {/* <View style={styles.categorie}>
+      <View style={styles.categorie}>
         <Categorie
           activeCat={activeCat}
           setActiveCat={setActiveCat}
           handleCheked={handleCheked}
         />
-      </View> */}
+      </View>
     </SafeAreaView>
   );
 };
@@ -127,8 +128,8 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   categorie: {
-    width: wp("100%"),
-    paddingHorizontal: wp("4%"),
+    width: "100%",
+    paddingHorizontal: 10,
   },
   userImg: {
     width: 50,
@@ -188,7 +189,13 @@ const styles = StyleSheet.create({
   titleSeachHome: {
     fontSize: 15,
     fontWeight: "600",
-    color: colors.WHITE,
+    color: colors.GREEN2,
+  },
+  titleCategorie: {
+    fontSize: 20,
+    fontWeight: "600",
+    color: colors.Noir,
+    padding: 10,
   },
 });
 
