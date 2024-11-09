@@ -118,6 +118,7 @@ const Home = ({ navigation }) => {
           handleCheked={handleCheked}
         />
       </View>
+      <Recipes recipeChekedData={recipeChekedData} />
     </SafeAreaView>
   );
 };
