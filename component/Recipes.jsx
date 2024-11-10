@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import {
   View,
   Text,
@@ -18,27 +18,26 @@ import ImageCard from "./ImageCard";
 
 const Recipes = ({ recipeChekedData }) => {
   const navigation = useNavigation();
+  const [imageHeights, setImageHeights] = useState({});
 
   const handleClick = (item) => {
     navigation.navigate("Description", item);
   };
 
-  //   const Item = ({ item, title, img }) => {
-  //     // const titleCheked = title.length > 12 && (`${title} + ...`)
-  //     return (
-  //       <TouchableOpacity onPress={() => handleClick(item)}>
-  //         <View style={styles.item}>
-  //           <View style={styles.recipesImgContainer}>
-  //             <Image source={{ uri: img }} style={styles.recipesImg} />
-  //           </View>
+  useEffect(() => {
+    // Calculer les hauteurs de toutes les images
 
-  //           <Text numberOfLines={1} style={styles.recipeTitle}>
-  //             {title}
-  //           </Text>
-  //         </View>
-  //       </TouchableOpacity>
-  //     );
-  //   };
+    recipeChekedData.forEach((image, index) => {
+      Image.getSize(image?.strMealThumb, (width, height) => {
+        const screenWidth = Dimensions.get("window").width;
+        const calculatedHeight = (screenWidth / 2 / width) * height;
+        setImageHeights((prev) => ({
+          ...prev,
+          [index]: calculatedHeight,
+        }));
+      });
+    });
+  }, []);
 
   return (
     <View style={styles.container}>
@@ -50,7 +49,7 @@ const Recipes = ({ recipeChekedData }) => {
         keyExtractor={(item) => item.idMeal}
         horizontal={false}
         numColumns={2}
-        showsVerticalScrollIndicator={false}
+        
       /> */}
       <MasonryFlashList
         data={recipeChekedData}
@@ -61,35 +60,13 @@ const Recipes = ({ recipeChekedData }) => {
           <ImageCard item={item} index={index} />
         )}
         estimatedItemSize={200}
+        showsVerticalScrollIndicator={false}
       />
     </View>
   );
 };
 
 const styles = StyleSheet.create({
-  item: {
-    width: wp("45%"),
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
-    paddingHorizontal: wp("5%"),
-    paddingVertical: hp("1%"),
-  },
-
-  recipesImg: {
-    width: wp("40%"),
-    height: hp("30%"),
-    borderRadius: 20,
-  },
-  recipeTitle: {
-    paddingVertical: wp("2%"),
-    color: colors.WHITE,
-    fontWeight: "bold",
-    fontSize: hp("1.5%"),
-  },
-  recipesImgContainer: {
-    marginVertical: wp("3%"),
-  },
   //   -------------------
   container: {
     flex: 1,
