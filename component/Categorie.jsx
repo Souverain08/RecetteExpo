@@ -4,15 +4,11 @@ import {
   Text,
   StyleSheet,
   FlatList,
-  Image,
   TouchableOpacity,
   ImageBackground,
 } from "react-native";
 import { categories, colors } from "../constant/Constant";
-import {
-  widthPercentageToDP as wp,
-  heightPercentageToDP as hp,
-} from "react-native-responsive-screen";
+import { heightPercentageToDP as hp } from "react-native-responsive-screen";
 
 const Categorie = ({ activeCat, setActiveCat, handleCheked }) => {
   const Item = ({ title, img }) => {

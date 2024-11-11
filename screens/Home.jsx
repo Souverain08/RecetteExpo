@@ -21,6 +21,7 @@ import Recipes from "../component/Recipes";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import images from "../assets/images/images";
 import { Badge } from "react-native-paper";
+import { ScrollView } from "react-native-gesture-handler";
 
 const Home = ({ navigation }) => {
   const [activeCat, setActiveCat] = useState("Beef");
@@ -109,16 +110,25 @@ const Home = ({ navigation }) => {
           </View>
         </ImageBackground>
       </View>
-      <Text style={styles.titleCategorie}>Categories</Text>
+      <ScrollView>
+        <View style={styles.titleCategoAll}>
+          <Text style={styles.titleCategorie}>Categories</Text>
+          <TouchableOpacity onPress={() => navigation.push("AllCategorie")}>
+            <Text style={styles.titleCategorieTwo}>All</Text>
+          </TouchableOpacity>
+        </View>
 
-      <View style={styles.categorie}>
-        <Categorie
-          activeCat={activeCat}
-          setActiveCat={setActiveCat}
-          handleCheked={handleCheked}
-        />
-      </View>
-      <Recipes recipeChekedData={recipeChekedData} />
+        <View style={styles.categorie}>
+          <Categorie
+            activeCat={activeCat}
+            setActiveCat={setActiveCat}
+            handleCheked={handleCheked}
+          />
+        </View>
+        <Text style={styles.titleRecipy}>Recipes</Text>
+
+        <Recipes recipeChekedData={recipeChekedData} />
+      </ScrollView>
     </SafeAreaView>
   );
 };
@@ -196,7 +206,25 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontWeight: "600",
     color: colors.Noir,
-    padding: 10,
+  },
+  titleCategorieTwo: {
+    fontSize: 15,
+    fontWeight: "600",
+    color: colors.ORANGE,
+  },
+  titleCategoAll: {
+    width: "100%",
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
+    padding: 15,
+  },
+  titleRecipy: {
+    fontSize: 20,
+    fontWeight: "600",
+    color: colors.Noir,
+    paddingLeft: 15,
+    paddingBottom: 15,
   },
 });
 
