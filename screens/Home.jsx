@@ -6,16 +6,11 @@ import {
   Image,
   SafeAreaView,
   StatusBar,
-  TextInput,
   TouchableOpacity,
   ImageBackground,
 } from "react-native";
 import { colors, recipe } from "../constant/Constant";
 import { Ionicons, Feather } from "@expo/vector-icons";
-import {
-  widthPercentageToDP as wp,
-  heightPercentageToDP as hp,
-} from "react-native-responsive-screen";
 import Categorie from "../component/Categorie";
 import Recipes from "../component/Recipes";
 import AsyncStorage from "@react-native-async-storage/async-storage";
@@ -46,11 +41,6 @@ const Home = ({ navigation }) => {
   }, []);
   // ce pour filtrer les recipe qu'on a choisie
 
-  const userPrpfil = {
-    name: name,
-    email: email,
-    userImg: userImg,
-  };
   // ce pour filtrer les recipe qu'on a choisie
   const handleCheked = (recipeCheked) => {
     const filterCategory = recipe.filter(

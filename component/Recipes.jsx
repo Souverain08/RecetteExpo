@@ -11,17 +11,12 @@ import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
 } from "react-native-responsive-screen";
-import { colors } from "../constant/Constant";
 import { useNavigation } from "@react-navigation/native";
 import { MasonryFlashList } from "@shopify/flash-list";
 import ImageCard from "./ImageCard";
 
 const Recipes = ({ recipeChekedData }) => {
   const navigation = useNavigation();
-
-  const handleClick = (item) => {
-    navigation.navigate("Description", item);
-  };
 
   return (
     <View style={styles.container}>

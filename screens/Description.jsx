@@ -20,18 +20,14 @@ const Description = ({ route, navigation }) => {
   const [isActive, setIsActive] = useState(false);
 
   return (
-    <ScrollView
-      showsVerticalScrollIndicator={false}
-      horizontal={false}
-      style={styles.containerDetail}
-    >
+    <View style={styles.containerDetail}>
       <ImageBackground
         source={{ uri: data.strMealThumb }}
         resizeMode="cover"
         style={styles.image}
       >
         <View style={styles.icon}>
-          <TouchableOpacity onPress={() => navigation.navigate("Home")}>
+          <TouchableOpacity onPress={() => navigation.goBack()}>
             <Ionicons
               name="arrow-back-circle-sharp"
               size={40}
@@ -47,88 +43,98 @@ const Description = ({ route, navigation }) => {
           </TouchableOpacity>
         </View>
       </ImageBackground>
-      <View>
-        <Text style={styles.measureTitle}>Mesure</Text>
-        <ScrollView
-          showsHorizontalScrollIndicator={false}
-          horizontal={true}
-          contentContainerStyle={styles.contentContainer}
-        >
-          <View style={styles.containerMeasure}>
-            <View style={styles.sheeldMeasure}>
-              <Text style={styles.titleMeasure}>
-                {data.strMeasure.strMeasure1}
-              </Text>
+      <ScrollView
+        showsVerticalScrollIndicator={false}
+        horizontal={false}
+        style={{
+          backgroundColor: "#fff",
+          top: -123,
+          borderTopLeftRadius: 90,
+        }}
+      >
+        <View>
+          <Text style={styles.measureTitle}>Mesure</Text>
+          <ScrollView
+            showsHorizontalScrollIndicator={false}
+            horizontal={true}
+            contentContainerStyle={styles.contentContainer}
+          >
+            <View style={styles.containerMeasure}>
+              <View style={styles.sheeldMeasure}>
+                <Text style={styles.titleMeasure}>
+                  {data.strMeasure.strMeasure1}
+                </Text>
+              </View>
+              <View style={styles.sheeldMeasure}>
+                <Text style={styles.titleMeasure}>
+                  {data.strMeasure.strMeasure2}
+                </Text>
+              </View>
+              <View style={styles.sheeldMeasure}>
+                <Text style={styles.titleMeasure}>
+                  {data.strMeasure.strMeasure3}
+                </Text>
+              </View>
+              <View style={styles.sheeldMeasure}>
+                <Text style={styles.titleMeasure}>
+                  {data.strMeasure.strMeasure4}
+                </Text>
+              </View>
+              <View style={styles.sheeldMeasure}>
+                <Text style={styles.titleMeasure}>
+                  {data.strMeasure.strMeasure5}
+                </Text>
+              </View>
             </View>
-            <View style={styles.sheeldMeasure}>
-              <Text style={styles.titleMeasure}>
-                {data.strMeasure.strMeasure2}
-              </Text>
-            </View>
-            <View style={styles.sheeldMeasure}>
-              <Text style={styles.titleMeasure}>
-                {data.strMeasure.strMeasure3}
-              </Text>
-            </View>
-            <View style={styles.sheeldMeasure}>
-              <Text style={styles.titleMeasure}>
-                {data.strMeasure.strMeasure4}
-              </Text>
-            </View>
-            <View style={styles.sheeldMeasure}>
-              <Text style={styles.titleMeasure}>
-                {data.strMeasure.strMeasure5}
-              </Text>
-            </View>
+          </ScrollView>
+        </View>
+        <View>
+          <Text style={styles.titleIncredient}>Incredient</Text>
+          <View style={styles.containerIngredient}>
+            <Octicons name="dot-fill" size={24} color={colors.ORANGE} />
+            <Text style={styles.titleCheeldIngredient}>
+              {data.strIngredient.strIngredient1}
+            </Text>
           </View>
-        </ScrollView>
-      </View>
-      <View>
-        <Text style={styles.titleIncredient}>Incredient</Text>
-        <View style={styles.containerIngredient}>
-          <Octicons name="dot-fill" size={24} color={colors.ORANGE} />
-          <Text style={styles.titleCheeldIngredient}>
-            {data.strIngredient.strIngredient1}
+          <View style={styles.containerIngredient}>
+            <Octicons name="dot-fill" size={24} color={colors.ORANGE} />
+            <Text style={styles.titleCheeldIngredient}>
+              {data.strIngredient.strIngredient2}
+            </Text>
+          </View>
+          <View style={styles.containerIngredient}>
+            <Octicons name="dot-fill" size={24} color={colors.ORANGE} />
+            <Text style={styles.titleCheeldIngredient}>
+              {data.strIngredient.strIngredient3}
+            </Text>
+          </View>
+          <View style={styles.containerIngredient}>
+            <Octicons name="dot-fill" size={24} color={colors.ORANGE} />
+            <Text style={styles.titleCheeldIngredient}>
+              {data.strIngredient.strIngredient4}
+            </Text>
+          </View>
+          <View style={styles.containerIngredient}>
+            <Octicons name="dot-fill" size={24} color={colors.ORANGE} />
+            <Text style={styles.titleCheeldIngredient}>
+              {data.strIngredient.strIngredient5}
+            </Text>
+          </View>
+          <View style={styles.containerIngredient}>
+            <Octicons name="dot-fill" size={24} color={colors.ORANGE} />
+            <Text style={styles.titleCheeldIngredient}>
+              {data.strIngredient.strIngredient6}
+            </Text>
+          </View>
+        </View>
+        <View>
+          <Text style={styles.titleInstruction}>Instructions</Text>
+          <Text style={styles.titleCheeldInstruction}>
+            {data.strInstructions}
           </Text>
         </View>
-        <View style={styles.containerIngredient}>
-          <Octicons name="dot-fill" size={24} color={colors.ORANGE} />
-          <Text style={styles.titleCheeldIngredient}>
-            {data.strIngredient.strIngredient2}
-          </Text>
-        </View>
-        <View style={styles.containerIngredient}>
-          <Octicons name="dot-fill" size={24} color={colors.ORANGE} />
-          <Text style={styles.titleCheeldIngredient}>
-            {data.strIngredient.strIngredient3}
-          </Text>
-        </View>
-        <View style={styles.containerIngredient}>
-          <Octicons name="dot-fill" size={24} color={colors.ORANGE} />
-          <Text style={styles.titleCheeldIngredient}>
-            {data.strIngredient.strIngredient4}
-          </Text>
-        </View>
-        <View style={styles.containerIngredient}>
-          <Octicons name="dot-fill" size={24} color={colors.ORANGE} />
-          <Text style={styles.titleCheeldIngredient}>
-            {data.strIngredient.strIngredient5}
-          </Text>
-        </View>
-        <View style={styles.containerIngredient}>
-          <Octicons name="dot-fill" size={24} color={colors.ORANGE} />
-          <Text style={styles.titleCheeldIngredient}>
-            {data.strIngredient.strIngredient6}
-          </Text>
-        </View>
-      </View>
-      <View>
-        <Text style={styles.titleInstruction}>Instructions</Text>
-        <Text style={styles.titleCheeldInstruction}>
-          {data.strInstructions}
-        </Text>
-      </View>
-    </ScrollView>
+      </ScrollView>
+    </View>
   );
 };
 
@@ -155,7 +161,7 @@ const styles = StyleSheet.create({
   measureTitle: {
     fontSize: hp("3%"),
     textAlign: "center",
-    color: colors.WHITE,
+    color: colors.Noir,
     marginTop: hp("2%"),
   },
   containerMeasure: {
@@ -178,7 +184,7 @@ const styles = StyleSheet.create({
   titleIncredient: {
     fontSize: hp("3%"),
     textAlign: "center",
-    color: colors.WHITE,
+    color: colors.Noir,
   },
   containerIngredient: {
     display: "flex",
@@ -190,19 +196,19 @@ const styles = StyleSheet.create({
   titleCheeldIngredient: {
     fontSize: hp("2%"),
     textAlign: "center",
-    color: colors.WHITE,
+    color: colors.Noir,
     marginHorizontal: wp("4%"),
   },
   titleInstruction: {
     fontSize: hp("3%"),
     textAlign: "center",
-    color: colors.WHITE,
+    color: colors.Noir,
     marginTop: hp("3%"),
   },
   titleCheeldInstruction: {
     fontSize: hp("2%"),
     textAlign: "center",
-    color: colors.WHITE,
+    color: colors.Noir,
     marginVertical: hp("3%"),
     paddingHorizontal: wp("3%"),
   },
