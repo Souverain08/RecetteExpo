@@ -10,6 +10,7 @@ import SeachRecipe from "../screens/SeachRecipe";
 import ForgotPassword from "../screens/ForgotPassword";
 import AllCategorie from "../screens/AllCategorie";
 import { colors } from "../constant/Constant";
+import RecipeDescription from "../screens/RecipeDescription";
 
 const Stack = createStackNavigator();
 
@@ -54,6 +55,20 @@ const HomeStack = () => {
         options={{ headerShown: false }}
       />
       <Stack.Screen
+        name="RecipeDescription"
+        component={RecipeDescription}
+        options={{
+          headerStyle: {
+            backgroundColor: colors.ORANGE,
+          },
+          headerTintColor: "#fff",
+          headerTitleStyle: {
+            fontWeight: "600",
+          },
+          title: "Recipes Description",
+        }}
+      />
+      <Stack.Screen
         name="AllCategorie"
         component={AllCategorie}
         options={{
@@ -64,6 +79,7 @@ const HomeStack = () => {
           headerTitleStyle: {
             fontWeight: "600",
           },
+          title: "All Categories",
         }}
       />
     </Stack.Navigator>

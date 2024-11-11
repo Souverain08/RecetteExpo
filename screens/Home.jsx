@@ -110,7 +110,7 @@ const Home = ({ navigation }) => {
           </View>
         </ImageBackground>
       </View>
-      <ScrollView>
+      <ScrollView showsVerticalScrollIndicator={false}>
         <View style={styles.titleCategoAll}>
           <Text style={styles.titleCategorie}>Categories</Text>
           <TouchableOpacity onPress={() => navigation.push("AllCategorie")}>
