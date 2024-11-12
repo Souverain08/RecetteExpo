@@ -48,7 +48,7 @@ const Description = ({ route, navigation }) => {
         contentContainerStyle={{ paddingBottom: 18 }}
         horizontal={false}
         style={{
-          backgroundColor: "red",
+          backgroundColor: colors.BACK,
           position: "absolute",
           zIndex: 20,
           top: hp("25%"),
