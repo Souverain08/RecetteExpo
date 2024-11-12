@@ -1,4 +1,4 @@
-import React, { useEffect, useLayoutEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   View,
   Text,
@@ -8,12 +8,12 @@ import {
   StatusBar,
   TouchableOpacity,
   ImageBackground,
+  Pressable,
 } from "react-native";
 import { colors, recipe } from "../constant/Constant";
 import { Ionicons, Feather } from "@expo/vector-icons";
 import Categorie from "../component/Categorie";
 import Recipes from "../component/Recipes";
-import AsyncStorage from "@react-native-async-storage/async-storage";
 import images from "../assets/images/images";
 import { Badge } from "react-native-paper";
 import { ScrollView } from "react-native-gesture-handler";
@@ -21,30 +21,13 @@ import { ScrollView } from "react-native-gesture-handler";
 const Home = ({ navigation }) => {
   const [activeCat, setActiveCat] = useState("Beef");
   const [recipeChekedData, setRecipeChekedData] = useState([]);
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [userImg, setUserImg] = useState("");
 
-  // recuperation de item
-  const recup = async () => {
-    let userIfo = await AsyncStorage.getItem("userProfil");
-
-    if (userIfo.length > 0) {
-      const user = JSON.parse(userIfo);
-      setEmail(user.email);
-      setName(user.name);
-      setUserImg(user.userImg);
-    }
-  };
-  useLayoutEffect(() => {
-    recup();
-  }, []);
   // ce pour filtrer les recipe qu'on a choisie
 
   // ce pour filtrer les recipe qu'on a choisie
   const handleCheked = (recipeCheked) => {
-    const filterCategory = recipe.filter(
-      (val) => val.strCategory == recipeCheked
+    const filterCategory = recipe?.filter(
+      (val) => val?.strCategory == recipeCheked
     );
     setRecipeChekedData(filterCategory);
   };
@@ -94,10 +77,13 @@ const Home = ({ navigation }) => {
               />
             </TouchableOpacity>
           </View>
-          <View style={styles.containerInput}>
+          <Pressable
+            onPress={() => navigation.navigate("SeachRecipe")}
+            style={styles.containerInput}
+          >
             <Feather name="search" size={24} color={colors.ORANGE} />
             <Text style={styles.titleSeachHome}>Seach Any Recipe..</Text>
-          </View>
+          </Pressable>
         </ImageBackground>
       </View>
       <ScrollView showsVerticalScrollIndicator={false}>

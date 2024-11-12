@@ -45,11 +45,18 @@ const Description = ({ route, navigation }) => {
       </ImageBackground>
       <ScrollView
         showsVerticalScrollIndicator={false}
+        contentContainerStyle={{ paddingBottom: 18 }}
         horizontal={false}
         style={{
-          backgroundColor: "#fff",
-          top: -123,
-          borderTopLeftRadius: 90,
+          backgroundColor: "red",
+          position: "absolute",
+          zIndex: 20,
+          top: hp("25%"),
+          right: 0,
+          left: 0,
+          bottom: 0,
+          borderTopLeftRadius: 30,
+          borderTopRightRadius: 30,
         }}
       >
         <View>
@@ -140,10 +147,10 @@ const Description = ({ route, navigation }) => {
 
 const styles = StyleSheet.create({
   contentContainer: {
-    marginHorizontal: wp("5%"),
-    paddingHorizontal: wp("5%"),
+    paddingHorizontal: wp("1%"),
   },
   containerDetail: {
+    flex: 1,
     backgroundColor: colors.BACK,
   },
   image: {
@@ -160,21 +167,22 @@ const styles = StyleSheet.create({
   },
   measureTitle: {
     fontSize: hp("3%"),
+    fontWeight: "300",
     textAlign: "center",
     color: colors.Noir,
-    marginTop: hp("2%"),
+    marginTop: hp("1%"),
   },
   containerMeasure: {
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",
-    paddingVertical: hp("4%"),
+    paddingVertical: hp("2%"),
   },
   sheeldMeasure: {
     paddingHorizontal: wp("4%"),
     paddingVertical: wp("2%"),
-    marginHorizontal: wp("4%"),
-    borderRadius: wp("3%"),
+    marginHorizontal: wp("1%"),
+    borderRadius: 10,
     backgroundColor: colors.ORANGE,
   },
   titleMeasure: {
